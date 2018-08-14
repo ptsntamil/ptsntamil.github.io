@@ -4,11 +4,16 @@
 		<link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css"/>
 	</head>
 	<body>
-		<div>
+		<div class="container">
 			<form>
 			    <div class="form-group">
 				    <label for="containsHeader">Contains Header</label>
-				    <input type="checkbox" class="form-control" id="containsHeader" />
+				    <input type="checkbox" value="true" class="form-check-input" id="containsHeader" />
+			  </div>
+			   <div class="form-group">
+				    <label for="separated">Datas separated By</label>
+				    <input type="radio" name="separated" value="," class="form-check-input" id="separated" />,(comma)
+				    <input type="radio" name="separated" value="\t" class="form-check-input" id="separated" />\t(tab)
 			  </div>
 			  <div class="form-group">
 			      <label for="csvFile">Password</label>
@@ -21,4 +26,5 @@
 	<script src="/libs/jquery.min.js"></script>
 	<script src="/libs/jquery-csv.min.js"></script>
 	<script src="/libs/bootstrap/bootstrap.min.js"></script>
+	<script src="/script/main.js"></script>
 </html>
