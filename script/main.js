@@ -17,12 +17,11 @@ let formats = [
   FN + "_" + LN + "@${domain}",
   FNF + "_"+ LN +"@${domain}"
 ];
-
-function 
+let containsHeader;
 $(document).ready(function() {
 
     // The event listener for the file upload
-    document.getElementById('csvFile').addEventListener('change', upload, false);
+    document.getElementById('convertData').addEventListener('click', upload, false);
 
     // Method that checks that the browser supports the HTML5 File API
     function browserSupportFileUpload() {
@@ -34,8 +33,7 @@ $(document).ready(function() {
     }
 
     // Method that reads and processes the selected file
-    function upload(evt) {
-    console.log("dsfsdfsdf")
+    function upload(evt) {    
     if (!browserSupportFileUpload()) {
         alert('The File APIs are not fully supported in this browser!');
         } else {
@@ -49,7 +47,7 @@ $(document).ready(function() {
                  data = $.csv.toArrays(csvData);
                 if (data && data.length > 0) {
                   console.log('Imported -' + data.length + '- rows successfully!', data);
-                  formatEmail(data);
+                  formatEmail(data, $("#containsHeader").is(":checked"));
                 } else {
                     alert('No data to import!');
                 } 
@@ -62,23 +60,32 @@ $(document).ready(function() {
 });
 
 
-function formatEmail(data) {
+function formatEmail(data, containsHeader) {
   $.each(data, function(index, values) {
-	  if(Array.isArray(values)) {
-  	  data[index] = getEmailForObject({
-        firstName: values[0],
-        lastName: values[1],
-        domain: values[2]
-      })
-    } else {
-  	  data[index] = getEmailForObject(values);
+    if((containsHeader && index > 0) || !containsHeader) {
+      if(Array.isArray(values)) {
+        data[index] = getEmailForObject({
+          firstName: values[0],
+          lastName: values[1],
+          domain: values[2]
+        })
+      } else {
+        data[index] = getEmailForObject(values);
+      }  
     }
   });
+  exportAsExcel("result.csv", data);
 }
 
 function getEmailForObject(values) {
 	var format = getTargetEmailFormat(values.domain);
-  values.email = format.replace(FN, values.firstName).replace(LN, values.lastName).replace(FNF, values.firstName[0]).replace(LNF, values.lastName[0]);
+  if(values.firstName) {
+    format = format.replace(FN, values.firstName).replace(FNF, values.firstName[0]);
+  }
+  if(values.lastName) {
+    format = format.replace(LN, values.lastName).replace(LNF, values.lastName[0]);  
+  }
+  values.email = format;
   values.email = values.email + values.domain;
   console.log(values);
 }
