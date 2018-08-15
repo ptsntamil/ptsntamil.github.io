@@ -23,6 +23,7 @@ $(document).ready(function() {
     // The event listener for the file upload
     document.getElementById('convertData').addEventListener('click', upload, false);
 
+
     // Method that checks that the browser supports the HTML5 File API
     function browserSupportFileUpload() {
         var isCompatible = false;
@@ -38,7 +39,7 @@ $(document).ready(function() {
         alert('The File APIs are not fully supported in this browser!');
         } else {
             var data = null;
-            var file = evt.target.files[0];
+            var file = document.getElementById('csvFile').files[0];
             var reader = new FileReader();
             reader.readAsText(file);
             reader.onload = function(event) {
