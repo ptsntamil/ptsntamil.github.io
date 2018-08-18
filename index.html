@@ -1,30 +1,71 @@
-<html>
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
+		<meta content="utf-8" http-equiv="encoding">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<title>Email Formater CSV</title>
-		<link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css"/>
+		<link rel="stylesheet" href="file:///E:/project/email/libs/bootstrap/bootstrap.min.css"/>
+		<link rel="stylesheet" href="file://E:/project/email/libs/fontawesome/css/all.min.css"/>
+		<link rel="stylesheet" href="file:///E:/project/email/css/style.css"/>
 	</head>
 	<body>
+		<header>
+				
+		</header>
 		<div class="container">
-			<form>
-			    <div class="form-group">
-				    <label for="containsHeader">Contains Header</label>
-				    <input type="checkbox" value="true" class="form-check-input" id="containsHeader" />
-			  </div>
-			   <div class="form-group">
-				    <label for="separated">Datas separated By</label>
-				    <input type="radio" name="separated" value="," class="form-check-input" id="separated" />,(comma)
-				    <input type="radio" name="separated" value="\t" class="form-check-input" id="separated" />\t(tab)
-			  </div>
-			  <div class="form-group">
-			      <label for="csvFile">Password</label>
-			      <input type="file" class="form-control" id="csvFile"/>
-			  </div>
-			  <button id="convertData" type="button" class="btn btn-primary">Submit</button>
-			</form>
+			<div class="row">
+				<div class="col-md-8">
+					<form class="formCsv">
+						<div class="row">
+							<div class="col-md-3 col-3">Contains Header</div>
+							<div class="col-md-9 col-9">
+								<input class="form-check-input" type="checkbox" id="containsHeader"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3 col-3">Field Separator</div>
+							<div class="col-md-9 col-9">
+								<div class="form-check-inline">
+		  							<input class="form-check-input" type="radio" name="separatedBy" id="comma" value=","/>
+		  							<label class="form-check-label" for="exampleRadios1">comma(,)</label>
+								</div>
+								<div class="form-check-inline">
+		  							<input class="form-check-input" type="radio" name="separatedBy" id="tab" value=","/>
+		  							<label class="form-check-label" for="exampleRadios1">tab(\t)</label>
+								</div>
+							</div>
+						</div>
+					    <div class="row">
+					        <div class="col-3 col-md-3">Select File</div>
+					        <div class="col-md-5 col-5">
+					        	<div class="fileUpload btn btn-secondary btn-sm">
+					        		<input type="file" class="upload" id="csvFile"/>
+					        		<i class="fas fa-upload"></i>
+					        		<label class="inputfile-label">Choose File</label>	
+					        	</div>
+					        </div>
+					    </div>
+					    <div class="row">
+					    	<div class="col-12 col-md-12">
+					    		<div class="text-center">(or)</div>
+					    	</div>
+					    </div>
+					    <div class="row">
+					        <div class="col-3 col-md-3">File Content</div>
+					        <div class="col-md-9 col-9">
+					        	<textarea class="form-control" id="csvContent" rows="5"></textarea>
+					        </div>
+					    </div>
+					    <button id="convertData" type="button" class="btn btn-primary btn-sm">Submit</button>
+					</form>		
+				</div>
+			</div> 
+			
 		</div>
 	</body>
-	<script src="/libs/jquery.min.js"></script>
-	<script src="/libs/jquery-csv.min.js"></script>
-	<script src="/libs/bootstrap/bootstrap.min.js"></script>
-	<script src="/script/main.js"></script>
+	<script src="file:///E:/project/email/libs/jquery.min.js"></script>
+	<script src="file:///E:/project/email/libs/jquery-csv.min.js"></script>
+	<script src="file:///E:/project/email/libs/bootstrap/bootstrap.min.js"></script>
+	<script src="file:///E:/project/email/script/main.js"></script>
 </html>

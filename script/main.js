@@ -20,7 +20,7 @@ let formats = [
 let headers = ["firstName", "lastName", "domain", "email"];
 let containsHeader;
 $(document).ready(function(event) {
-  document.getElementById('convertData').addEventListener('click', getEmailFormatList, false);  
+  document.getElementById('convertData').addEventListener('click', getEmailFormatList, false); 
 });
 
 /**
