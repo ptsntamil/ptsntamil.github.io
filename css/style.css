@@ -20,7 +20,7 @@ form .row {
     position: relative;
     overflow: hidden;
     width: 100%;
-    padding: 0px;
+    padding: 2px;
     text-align: center;
 }
 .fileUpload input.upload {
@@ -35,4 +35,8 @@ form .row {
     cursor: pointer;
     opacity: 0;
     filter: alpha(opacity=0);
+    width: 100%;
+}
+.inputfile-label {
+    margin-bottom: 0px;
 }
