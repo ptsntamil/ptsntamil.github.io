@@ -15,7 +15,7 @@
 		</header>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-8 col-8">
 					<form class="formCsv">
 						<div class="row">
 							<div class="col-md-3 col-3">Contains Header</div>
@@ -45,6 +45,7 @@
 					        		<label class="inputfile-label">Choose File</label>	
 					        	</div>
 					        </div>
+					        <div id="selectedFileName" class="col-4 col-md-4"></div>
 					    </div>
 					    <div class="row">
 					    	<div class="col-12 col-md-12">
@@ -57,11 +58,20 @@
 					        	<textarea class="form-control" id="csvContent" rows="5"></textarea>
 					        </div>
 					    </div>
-					    <button id="convertData" type="button" class="btn btn-primary btn-sm">Submit</button>
-					</form>		
+						<div class="row">
+							<div class="col-md-3 col-3">File Name</div>
+							<div class="col-md-4 col-4">
+								<input type="text" name="fileName" id="fileName" class="form-control">
+							</div>
+						</div>
+						<div class="row">
+					    	<div class="col-12 col-md-12">
+					    		<button id="convertData" type="button" class="btn btn-primary btn-sm">Get Results</button>
+					    	</div>
+					    </div>    
+					</form>
 				</div>
 			</div> 
-			
 		</div>
 	</body>
 	<script src="/libs/jquery.min.js"></script>

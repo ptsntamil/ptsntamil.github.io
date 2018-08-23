@@ -20,8 +20,21 @@ let formats = [
 let headers = ["firstName", "lastName", "domain", "email"];
 let containsHeader;
 $(document).ready(function(event) {
-  document.getElementById('convertData').addEventListener('click', getEmailFormatList, false); 
+  document.getElementById('convertData').addEventListener('click', getEmailFormatList, false);
+  document.getElementById('csvFile').addEventListener('change', appendFileName, false);
 });
+
+/**
+ *
+ *
+ */
+function appendFileName(event) {
+  if(this.files[0]) {
+    $("#selectedFileName").text(this.files[0].name);
+  } else {
+    $("#selectedFileName").text("No files selected");
+  }
+}
 
 /**
  *
@@ -40,6 +53,7 @@ function getEmailFormatList() {
     upload();
   }
 }
+
 /**
  *
  */
@@ -100,7 +114,7 @@ function formatEmail(data, containsHeader) {
       });
     }
   });
-  exportAsExcel("result.csv", data);
+  exportAsExcel(($("#fileName").val() || "result") + ".csv", data);
 }
 
 /**
@@ -117,9 +131,15 @@ function getEmailForObject(values) {
     lastName = values.lastName.toLowerCase();
     format = format.replace(LN, lastName).replace(LNF, lastName[0]);  
   }
+  if(!values.firstName) {
+
+    format = format.replace(FN, "{first}").replace(FNF, "{firstL}");
+  }
+  if(!values.lastName) {
+    format = format.replace(LN, "{last}").replace(LNF, "{lastL}");  
+  }
   values.email = format;
   values.email = values.email + values.domain;
-  console.log(values);
   return values;
 }
 
@@ -214,7 +234,6 @@ function getEmailFormatsForAll(data) {
   $.each(data, function(index, emaildetails) {
     data[index].format = getEmailFormatByEmail(emaildetails);
   });
-  console.log(JSON.stringify(data));
 }
 
 function getEmailFormatByEmail(email) {
@@ -240,6 +259,7 @@ function getEmailFormatByEmail(email) {
 
 function formElementId(groupName) {
   var id = "";
+  if(groupName)
   groupName = groupName.split(" ");
   if(groupName.length == 1) {
     return groupName[0];

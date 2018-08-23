@@ -40,3 +40,10 @@ form .row {
 .inputfile-label {
     margin-bottom: 0px;
 }
+.formCsv .form-control {
+    padding: 0px 5px;
+}
+#selectedFileName {
+    font-size: 13px;
+    color: #2668ba;
+}
