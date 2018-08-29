@@ -234,6 +234,7 @@ function getEmailFormatsForAll(data) {
   $.each(data, function(index, emaildetails) {
     data[index].format = getEmailFormatByEmail(emaildetails);
   });
+  console.log(JSON.stringify(data));
 }
 
 function getEmailFormatByEmail(email) {
